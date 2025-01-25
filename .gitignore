@@ -12,6 +12,11 @@ out/
 .springBeans
 .sts4-cache
 .class
+compiler.xml
+encodings.xml
+jarRepositories.xml
+misc.xml
+vcs.xml
 bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
