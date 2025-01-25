@@ -12,12 +12,8 @@ out/
 .springBeans
 .sts4-cache
 .class
-compiler.xml
-encodings.xml
-jarRepositories.xml
-misc.xml
-vcs.xml
 bin/
+.idea/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 
@@ -34,3 +30,4 @@ bin/
 ### Mac OS ###
 .DS_Store
 /target/classes/com/Incident/Management/IncidentManagementApplication.class
+
