@@ -29,5 +29,5 @@ bin/
 
 ### Mac OS ###
 .DS_Store
-/target/classes/com/Incident/Management/IncidentManagementApplication.class
+/target
 
