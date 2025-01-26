@@ -21,6 +21,7 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable()) // Disable CSRF for POST requests
                 .authorizeHttpRequests(authz -> authz
+                        .requestMatchers("/api/login/**").permitAll()
                         .requestMatchers("/api/users/**").permitAll() // Allow access to user-related endpoints
                         .requestMatchers("/api/incidents/**").permitAll() // Allow access to incident-related endpoints
                         .requestMatchers("/api/password-reset/**").permitAll() // Allow access to password reset endpoints
