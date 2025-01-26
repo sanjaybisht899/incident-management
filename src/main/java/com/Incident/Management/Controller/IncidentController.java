@@ -46,10 +46,6 @@ public class IncidentController {
     }
 
     // Update an incident
-    @PutMapping("/{id}")
-    public Incident updateIncident(@PathVariable Long id, @RequestBody Incident incident) {
-        return incidentService.updateIncident(id, incident, userId);
-    }
     @PutMapping("/{id}/user/{userId}")
     public ResponseEntity<?> updateIncident(@PathVariable Long id, @PathVariable Long userId, @RequestBody Incident incident) {
         Incident updatedIncident = incidentService.updateIncident(id, incident, userId);
@@ -65,20 +61,26 @@ public class IncidentController {
     public void deleteIncident(@PathVariable Long id) {
         incidentService.deleteIncident(id);
     }
+
+    // Get all incidents for a specific user
     @GetMapping("/user/{userId}")
     public List<Incident> getIncidentsByUserId(@PathVariable Long userId) {
         return incidentService.getIncidentsByUserId(userId);
     }
 
+    // Get an incident by ID and user ID
     @GetMapping("/{id}/user/{userId}")
     public Incident getIncidentByIdAndUserId(@PathVariable Long id, @PathVariable Long userId) {
         return incidentService.getIncidentByIdAndUserId(id, userId);
     }
+
+    // Get all incidents by priority
     @GetMapping("/priority/{priority}")
     public List<Incident> getIncidentsByPriority(@PathVariable String priority) {
         return incidentService.getIncidentsByPriority(priority);
     }
 
+    // Get all incidents by status
     @GetMapping("/status/{status}")
     public List<Incident> getIncidentsByStatus(@PathVariable String status) {
         return incidentService.getIncidentsByStatus(status);
