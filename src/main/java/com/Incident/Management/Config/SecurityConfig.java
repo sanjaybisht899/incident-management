@@ -21,11 +21,12 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable()) // Disable CSRF for POST requests
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/api/users/**").permitAll()
-                        .requestMatchers("/api/incidents/**").permitAll()
-                        .anyRequest().authenticated()
+                        .requestMatchers("/api/users/**").permitAll() // Allow access to user-related endpoints
+                        .requestMatchers("/api/incidents/**").permitAll() // Allow access to incident-related endpoints
+                        .requestMatchers("/api/password-reset/**").permitAll() // Allow access to password reset endpoints
+                        .anyRequest().authenticated() // Secure all other endpoints
                 )
-                .httpBasic();
+                .httpBasic(); // Enable Basic Authentication
 
         return http.build();
     }
@@ -34,13 +35,13 @@ public class SecurityConfig {
     public UserDetailsService userDetailsService() {
         UserDetails admin = User.builder()
                 .username("admin")
-                .password(passwordEncoder().encode("admin"))
+                .password(passwordEncoder().encode("admin")) // Encode the password
                 .roles("ADMIN")
                 .build();
 
         UserDetails user = User.builder()
                 .username("user")
-                .password(passwordEncoder().encode("user"))
+                .password(passwordEncoder().encode("user")) // Encode the password
                 .roles("USER")
                 .build();
 
@@ -49,6 +50,6 @@ public class SecurityConfig {
 
     @Bean
     public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
+        return new BCryptPasswordEncoder(); // Use BCrypt for password encoding
     }
 }

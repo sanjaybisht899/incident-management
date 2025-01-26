@@ -3,11 +3,10 @@ package com.Incident.Management.Model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import java.time.LocalDateTime;
 
-import java.util.List;
-
-@Setter
 @Getter
+@Setter
 @Entity
 public class User {
 
@@ -36,5 +35,13 @@ public class User {
 
     @Column(nullable = false)
     private String country;
+
+    @Column(nullable = false)
+    private String password;
+    @Column
+    private String passwordResetToken;
+
+    @Column
+    private LocalDateTime passwordResetTokenExpiry;
 
 }
