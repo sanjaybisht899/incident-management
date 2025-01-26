@@ -21,7 +21,8 @@ public class SecurityConfig {
         http
                 .csrf(csrf -> csrf.disable()) // Disable CSRF for POST requests
                 .authorizeHttpRequests(authz -> authz
-                        .requestMatchers("/api/users/**").permitAll() // Allow ALL methods under /api/users/**
+                        .requestMatchers("/api/users/**").permitAll()
+                        .requestMatchers("/api/incidents/**").permitAll()
                         .anyRequest().authenticated()
                 )
                 .httpBasic();
